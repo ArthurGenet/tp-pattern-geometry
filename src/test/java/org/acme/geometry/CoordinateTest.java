@@ -1,5 +1,8 @@
 package org.acme.geometry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,4 +23,5 @@ public class CoordinateTest {
 		Assert.assertEquals(2.0, c.getX(), EPSILON);
 		Assert.assertEquals(1.5, c.getY(), EPSILON);
 	}
+	
 }
