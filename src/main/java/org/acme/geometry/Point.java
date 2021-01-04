@@ -5,7 +5,7 @@ public class Point implements Geometry{
 	private Coordinate coordinate;
 	
 	public Point() {
-		Coordinate coordinate = new Coordinate();
+		Coordinate coordinate = new Coordinate(0.0, 0.0);
 		this.coordinate = coordinate;
 	}
 	
@@ -19,6 +19,15 @@ public class Point implements Geometry{
 
 	public String getType() {
 		return "Point";
+	}
+
+	public boolean isEmpty() {
+		if (this.coordinate.isEmpty() == false) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 }

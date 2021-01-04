@@ -33,4 +33,10 @@ public class LineStringTest {
 		LineString l = new LineString();
 		Assert.assertEquals("LineString", l.getType());
 	}
+	
+	@Test
+	public void testLineStringIsEmpty(){
+		LineString l = new LineString();
+		Assert.assertEquals(false, l.isEmpty());
+	}
 }

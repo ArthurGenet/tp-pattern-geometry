@@ -8,7 +8,8 @@ public class LineString implements Geometry{
 	private List<Point> points = new ArrayList<Point>();
 	
 	public LineString() {
-		Point point = new Point();
+		Coordinate coordinate = new Coordinate(0.0, 0.0);
+		Point point = new Point(coordinate);
 		this.points.add(point);
 	}
 	
@@ -22,5 +23,14 @@ public class LineString implements Geometry{
 	
 	public String getType() {
 		return "LineString";
+	}
+	
+	public boolean isEmpty() {
+		for (int i = 0; i < this.points.size(); i += 1) {
+			if (this.points.get(i).getCoordinate().isEmpty() == true) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
