@@ -29,14 +29,34 @@ public class LineStringTest {
 	}
 	
 	@Test
+	public void testLineStringGetType(){
+		LineString l = new LineString();
+		Assert.assertEquals("LineString", l.getType());
+	}
+	
+	@Test
 	public void testLineStringGetString(){
 		LineString l = new LineString();
 		Assert.assertEquals("LineString", l.getType());
 	}
 	
 	@Test
-	public void testLineStringIsEmpty(){
+	public void testLineStringGetNumPoints(){
 		LineString l = new LineString();
-		Assert.assertEquals(false, l.isEmpty());
+		Assert.assertEquals(1.0, l.getNumPoints(), EPSILON);
+	}
+	
+	@Test
+	public void testLineStringGetPointN(){
+		LineString l = new LineString();
+		Assert.assertEquals(0.0, l.getPointN(0).getCoordinate().getX(), EPSILON);
+	}
+	
+	@Test
+	public void testLineStringTranslate(){
+		LineString l = new LineString();
+		l.translate(2.0, 3.0);
+		Assert.assertEquals(2.0, l.getPoints().get(0).getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(3.0, l.getPoints().get(0).getCoordinate().getY(), EPSILON);
 	}
 }

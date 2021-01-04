@@ -25,12 +25,26 @@ public class LineString implements Geometry{
 		return "LineString";
 	}
 	
+	public int getNumPoints() {
+		return this.points.size();
+	}
+	
+	public Point getPointN(int n) {
+		return this.points.get(n);
+	}
+	
 	public boolean isEmpty() {
-		for (int i = 0; i < this.points.size(); i += 1) {
-			if (this.points.get(i).getCoordinate().isEmpty() == true) {
+		for (int i = 0; i < this.getNumPoints(); i += 1) {
+			if (this.getPointN(i).getCoordinate().isEmpty() == true) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public void translate(double dx, double dy) {
+		for (int i = 0; i < this.getNumPoints(); i += 1) {
+			this.points.set(i, new Point(new Coordinate(this.getPointN(i).getCoordinate().getX() + dx, this.getPointN(i).getCoordinate().getY() + dy))) ;
+		}
 	}
 }
