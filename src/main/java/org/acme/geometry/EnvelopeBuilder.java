@@ -1,6 +1,6 @@
 package org.acme.geometry;
 
-public class EnvelopeBuilder {
+public class EnvelopeBuilder implements GeometryVisitor{
 
 	private double xMin = Double.NaN;
 	private double yMin = Double.NaN;
@@ -35,5 +35,18 @@ public class EnvelopeBuilder {
 	public Envelope build() {
 		
 		return new Envelope(new Coordinate(xMin, yMin), new Coordinate(xMax, yMax));
+	}
+
+	@Override
+	public void visit(Point point) {
+		insert(point.getCoordinate());
+	}
+
+	@Override
+	public void visit(LineString lineString) {
+		for (int i = 0; i < lineString.getNumPoints(); i += 1) {
+			insert(lineString.getPointN(i).getCoordinate());
+		}
+		
 	}
 }
