@@ -1,26 +1,53 @@
 package org.acme.geometry;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class GeometryVisitorTest {
 	
-	@Test
-	public void testVisitLogGeometryPoint(){
-		LogGeometryVisitor visitor = new LogGeometryVisitor();
+
+	ByteArrayOutputStream os = new ByteArrayOutputStream();
+	PrintStream out = new PrintStream(os);
+	
+	
+	@Test 
+	public void testPointB() throws UnsupportedEncodingException {
+		
+		LogGeometryVisitor visitor = new LogGeometryVisitor(out);
 		Geometry geometry = new Point(new Coordinate(3.0,4.0));
-		System.out.println("\nExpect : Je suis un point avec x = 3.0 et y = 4.0");
-		System.out.print("Got : ");
 		geometry.accept(visitor);
+		
+		String output = os.toString("UTF8");
+		Assert.assertEquals("Je suis un point avec x = 3.0 et y = 4.0", output);
+		
 	}
 	
-	@Test
-	public void testVisitLogGeometryLineString(){
-		LogGeometryVisitor visitor = new LogGeometryVisitor();
-		Geometry geometry = new LineString();
-		System.out.println("\nExpect : Je suis une polyligne avec 1 point(s)");
-		System.out.print("Got : ");
+	@Test 
+	public void testLineStringAB() throws UnsupportedEncodingException {
+		
+		LogGeometryVisitor visitor = new LogGeometryVisitor(out);
+		
+		Coordinate c = new Coordinate(4.0, 1.5);
+		Coordinate c2 = new Coordinate(1.0, 3.0);
+		Point p = new Point(c);
+		Point p2 = new Point(c2);
+		List<Point> points = new ArrayList<Point>();
+		points.add(p);
+		points.add(p2);
+		Geometry geometry = new LineString(points);
+		
 		geometry.accept(visitor);
+		
+		String output = os.toString("UTF8");
+		Assert.assertEquals("Je suis une polyligne avec 2 point(s)", output);
+		
 	}
 	
 	@Test
