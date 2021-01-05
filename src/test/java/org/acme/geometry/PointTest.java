@@ -1,5 +1,8 @@
 package org.acme.geometry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -49,5 +52,17 @@ public class PointTest {
 		Assert.assertNotEquals(copy, p);
 		Assert.assertEquals(copy.getCoordinate().getX(), p.getCoordinate().getX(), EPSILON);
 		Assert.assertEquals(copy.getCoordinate().getY(), p.getCoordinate().getY(), EPSILON);
+	}
+	
+	@Test
+	public void testPointGetEnvelope(){
+		Coordinate c = new Coordinate(4.0, 1.5);
+		Point p = new Point(c);
+
+
+		Assert.assertEquals(4.0, p.getEnvelope().getXmax(), EPSILON);
+		Assert.assertEquals(1.5, p.getEnvelope().getYmax(), EPSILON);
+		Assert.assertEquals(4.0, p.getEnvelope().getXmin(), EPSILON);
+		Assert.assertEquals(1.5, p.getEnvelope().getYmin(), EPSILON);
 	}
 }

@@ -56,4 +56,13 @@ public class LineString implements Geometry{
 		}
 		return new LineString(newPoints);	
 	}
+
+	@Override
+	public Envelope getEnvelope() {
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+		for (int i = 0; i < getNumPoints(); i += 1) {
+			builder.insert(getPointN(i).getCoordinate());
+		}
+		return builder.build();
+	}
 }

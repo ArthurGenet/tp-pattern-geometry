@@ -24,39 +24,25 @@ public class Envelope {
 		}
 	}
 	public double getXmin() {
-		if (bottomLeft.getX() - topRight.getX() > 0) {
-			return topRight.getX();
-		}
-		else {
-			return bottomLeft.getX();
-		}
+		
+		return bottomLeft.getX();
+		
 	}
 	
 	public double getYmin() {
-		if (bottomLeft.getY() - topRight.getY() > 0) {
-			return topRight.getY();
-		}
-		else {
-			return bottomLeft.getY();
-		}
+		
+		return bottomLeft.getY();
+
 	}
 	
 	public double getXmax() {
-		if (bottomLeft.getX() - topRight.getX() > 0) {
-			return bottomLeft.getX();
-		}
-		else {
-			return topRight.getX();
-		}
+		
+		return topRight.getX();
+		
 	}
 	
 	public double getYmax() {
-		if (bottomLeft.getY() - topRight.getY() > 0) {
-			return bottomLeft.getY();
-		}
-		else {
-			return topRight.getY();
-		}
+		return topRight.getY();
 	}
 	
 	
