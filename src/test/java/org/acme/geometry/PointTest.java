@@ -41,4 +41,13 @@ public class PointTest {
 		Assert.assertEquals(2.0, p.getCoordinate().getX(), EPSILON);
 		Assert.assertEquals(3.0, p.getCoordinate().getY(), EPSILON);
 	}
+	
+	@Test
+	public void testPointClone(){
+		Point p = new Point();
+		Point copy = p.clone();
+		Assert.assertNotEquals(copy, p);
+		Assert.assertEquals(copy.getCoordinate().getX(), p.getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(copy.getCoordinate().getY(), p.getCoordinate().getY(), EPSILON);
+	}
 }

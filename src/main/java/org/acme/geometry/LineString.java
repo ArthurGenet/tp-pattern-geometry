@@ -47,4 +47,13 @@ public class LineString implements Geometry{
 			this.points.set(i, new Point(new Coordinate(this.getPointN(i).getCoordinate().getX() + dx, this.getPointN(i).getCoordinate().getY() + dy))) ;
 		}
 	}
+	
+	@Override
+	public LineString clone() {
+		List<Point> newPoints = new ArrayList<>(getNumPoints());
+		for (Point point : points) {
+				newPoints.add(point.clone());
+		}
+		return new LineString(newPoints);	
+	}
 }
