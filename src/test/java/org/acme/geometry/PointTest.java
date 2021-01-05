@@ -65,4 +65,5 @@ public class PointTest {
 		Assert.assertEquals(4.0, p.getEnvelope().getXmin(), EPSILON);
 		Assert.assertEquals(1.5, p.getEnvelope().getYmin(), EPSILON);
 	}
+	
 }
